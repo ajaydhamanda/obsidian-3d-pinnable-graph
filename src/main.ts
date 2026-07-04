@@ -33,6 +33,17 @@ export default class Pg3dPlugin extends Plugin {
 		});
 
 		this.addCommand({
+			id: "export-graph-image",
+			name: "Export graph image",
+			checkCallback: (checking) => {
+				const views = this.graphLeaves();
+				if (views.length === 0) return false;
+				if (!checking) views[0].exportImage();
+				return true;
+			},
+		});
+
+		this.addCommand({
 			id: "unpin-all-nodes",
 			name: "Unpin all nodes",
 			checkCallback: (checking) => {

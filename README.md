@@ -8,6 +8,8 @@
 
 Most graph views show you a hairball. This one shows you a **brain**: community detection groups notes and tags that share hubs, a cluster-gravity force condenses each group into its own colored region, and a sphere-shell force keeps the whole thing in a clean spherical silhouette. Bloom glow, glossy spheres, and hover focus make it something you actually want to leave open on a second monitor.
 
+![The 3D Pinnable Graph view — cluster regions form a spherical brain of your vault](docs/graph.png)
+
 And the part no other graph plugin does: **pin nodes in 3D space**. Click a note to freeze it exactly where it is; everything else keeps moving elastically around it. Build a spatial map of your vault that stays put — pins survive restarts and follow notes when you rename them.
 
 ---
@@ -77,7 +79,7 @@ Open the graph via the **atom icon** in the left ribbon, or `Ctrl/Cmd+P` → **"
 | **⛶ button** (top right) | Fit the whole graph in view |
 | **⚙ button** (top right) | Open the in-view settings panel |
 
-Commands (`Ctrl/Cmd+P`): **Open graph** · **Fit graph to view** · **Unpin all nodes**
+Commands (`Ctrl/Cmd+P`): **Open graph** · **Fit graph to view** · **Unpin all nodes** · **Export graph image** (saves a PNG of the current view into your vault)
 
 > 💡 **Tip:** if your graph ever looks stretched toward one lonely far-away point, you probably drag-pinned a node by accident. One click on it (or "Unpin all") fixes it.
 
@@ -103,6 +105,8 @@ Everything below lives in both the in-view panel (⚙) and Settings → 3D Pinna
 ## V.A.U.L.T. — a sci-fi HUD for your vault
 
 The repo includes a standalone companion app in [`vault-hud/`](vault-hud/): a gold, JARVIS-style dashboard that renders your vault as a glowing particle brain floating in space, framed by live panels — note/link/word counts with sparklines, cluster regions, top hubs, recently edited notes, a live clock, and (if you use Claude Code) a token-usage gauge read from your local session data.
+
+![V.A.U.L.T. — live HUD dashboard of your vault](docs/vault-hud.png)
 
 It runs entirely on your machine and reads your vault straight from disk — Obsidian doesn't even need to be open. Clicking any node opens that note in Obsidian.
 

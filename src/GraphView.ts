@@ -344,6 +344,23 @@ export class Pg3dGraphView extends ItemView {
 		this.graph?.zoomToFit(600, 40);
 	}
 
+	/** Render one frame and save the canvas as a PNG in the vault root. */
+	async exportImage() {
+		if (!this.graph) return;
+		this.graph.postProcessingComposer?.()?.render();
+		const canvas: HTMLCanvasElement = this.graph.renderer().domElement;
+		const base64 = canvas.toDataURL("image/png").split(",")[1];
+		const bin = atob(base64);
+		const buf = new Uint8Array(bin.length);
+		for (let i = 0; i < bin.length; i++) buf[i] = bin.charCodeAt(i);
+		const name = `3D Graph Export ${new Date()
+			.toISOString()
+			.slice(0, 19)
+			.replace(/[T:]/g, "-")}.png`;
+		await this.app.vault.createBinary(name, buf.buffer);
+		new Notice(`Exported ${name}`);
+	}
+
 	private toggleSettingsPanel(open = !this.panelOpen) {
 		this.panelOpen = open;
 		this.panelEl.toggleClass("is-open", open);
