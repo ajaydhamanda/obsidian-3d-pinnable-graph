@@ -1,0 +1,152 @@
+:root {
+	--gold: #d9b45b;
+	--gold-hot: #ffe9a8;
+	--gold-dim: rgba(217, 180, 91, 0.45);
+	--gold-faint: rgba(217, 180, 91, 0.18);
+	--bg: #000;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+	height: 100%;
+	background: var(--bg);
+	overflow: hidden;
+	font-family: "JetBrains Mono", "SF Mono", ui-monospace, Menlo, monospace;
+	color: var(--gold);
+	font-size: 11px;
+	letter-spacing: 0.12em;
+}
+
+#graph { position: fixed; inset: 0; }
+
+/* subtle perspective floor like the reference */
+.grid-floor {
+	position: fixed;
+	left: 0; right: 0; bottom: 0;
+	height: 28vh;
+	pointer-events: none;
+	background:
+		repeating-linear-gradient(90deg, var(--gold-faint) 0 1px, transparent 1px 90px),
+		repeating-linear-gradient(0deg, var(--gold-faint) 0 1px, transparent 1px 46px);
+	mask-image: linear-gradient(to top, rgba(0,0,0,.5), transparent);
+	-webkit-mask-image: linear-gradient(to top, rgba(0,0,0,.5), transparent);
+	transform: perspective(600px) rotateX(55deg) scale(1.6);
+	transform-origin: bottom;
+	opacity: 0.5;
+}
+
+.hud { position: fixed; z-index: 10; pointer-events: none; }
+.hud a, .hud .rows { pointer-events: auto; }
+
+/* ---------- header ---------- */
+
+.top-left { top: 26px; left: 30px; }
+.top-left h1 {
+	font-size: 30px;
+	font-weight: 600;
+	letter-spacing: 0.28em;
+	color: var(--gold-hot);
+	text-shadow: 0 0 18px rgba(217, 180, 91, 0.55);
+}
+.top-left .sub { margin-top: 6px; font-size: 9px; color: var(--gold-dim); }
+
+.top-center {
+	top: 32px; left: 50%;
+	transform: translateX(-50%);
+	display: flex; gap: 26px;
+	font-size: 10px;
+	color: var(--gold);
+}
+
+.top-right { top: 26px; right: 30px; text-align: right; }
+.clock { font-size: 38px; font-weight: 600; color: var(--gold-hot); text-shadow: 0 0 18px rgba(217,180,91,.5); }
+.clock-s { font-size: 20px; opacity: 0.7; margin-left: 4px; }
+.clock-date { margin-top: 4px; font-size: 10px; color: var(--gold-dim); }
+
+.led {
+	display: inline-block;
+	width: 5px; height: 5px;
+	margin-right: 7px;
+	border-radius: 50%;
+	background: var(--gold);
+	box-shadow: 0 0 6px var(--gold);
+	vertical-align: 1px;
+}
+
+/* ---------- columns ---------- */
+
+.left  { top: 120px; left: 30px;  width: 250px; }
+.right { top: 120px; right: 30px; width: 250px; text-align: left; }
+
+h2 {
+	font-size: 10px;
+	font-weight: 500;
+	letter-spacing: 0.2em;
+	color: var(--gold);
+	padding-bottom: 6px;
+	border-bottom: 1px solid var(--gold-faint);
+	margin-bottom: 12px;
+	white-space: nowrap;
+}
+h2 .dim { color: var(--gold-dim); font-size: 9px; margin-left: 6px; }
+h2.gap { margin-top: 26px; }
+
+.vital { margin-bottom: 16px; }
+.vital-head { font-size: 9px; color: var(--gold); }
+.vital-head .side { float: right; color: var(--gold-dim); }
+.vital-num {
+	font-size: 30px;
+	font-weight: 600;
+	color: var(--gold-hot);
+	line-height: 1.25;
+	text-shadow: 0 0 14px rgba(217,180,91,.35);
+}
+.vital-num .unit { font-size: 14px; margin-left: 2px; opacity: 0.7; }
+.spark { height: 26px; color: var(--gold); opacity: 0.8; }
+.spark svg { width: 100%; height: 100%; display: block; }
+
+.rows { font-size: 10px; }
+.row { display: flex; align-items: baseline; gap: 8px; padding: 3.5px 0; }
+.row .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--gold); flex: 0 0 auto; box-shadow: 0 0 5px var(--gold); }
+.row-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--gold); }
+.row-val { margin-left: auto; color: var(--gold-dim); flex: 0 0 auto; }
+
+.hint { margin-top: 28px; font-size: 9px; line-height: 1.9; color: var(--gold-dim); }
+
+/* ---------- bottom ---------- */
+
+.bottom-center {
+	bottom: 26px; left: 50%;
+	transform: translateX(-50%);
+	text-align: center;
+	width: 520px;
+}
+.directive { font-size: 10px; color: var(--gold-dim); margin-bottom: 6px; }
+.big {
+	font-size: 58px;
+	font-weight: 700;
+	color: var(--gold-hot);
+	text-shadow: 0 0 26px rgba(217, 180, 91, 0.6);
+	line-height: 1;
+}
+.big-unit { font-size: 16px; font-weight: 500; margin-left: 10px; color: var(--gold); }
+.rule { height: 1px; background: linear-gradient(90deg, transparent, var(--gold-dim), transparent); margin: 12px 0 8px; }
+.velocity { font-size: 9px; color: var(--gold-dim); }
+
+/* ---------- graph tooltip ---------- */
+
+.node-tip {
+	font-family: inherit;
+	font-size: 11px;
+	letter-spacing: 0.08em;
+	color: var(--gold-hot);
+	background: rgba(10, 8, 2, 0.85);
+	border: 1px solid var(--gold-faint);
+	border-radius: 4px;
+	padding: 4px 9px;
+}
+
+@media (max-width: 1100px) {
+	.left, .right { display: none; }
+}

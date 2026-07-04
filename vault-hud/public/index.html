@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>V.A.U.L.T.</title>
+<link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+<div id="graph"></div>
+<div class="grid-floor"></div>
+
+<header class="hud top-left">
+	<h1>B.R.A.I.N.</h1>
+	<p class="sub">SECOND&nbsp;BRAIN · RENDERED&nbsp;AS · INTERACTIVE&nbsp;NETWORK</p>
+</header>
+
+<div class="hud top-center">
+	<span><i class="led"></i>CORE · LIVE</span>
+	<span><i class="led"></i>VAULT · <span id="vault-name">—</span></span>
+	<span><i class="led"></i>GRAPH · ALIVE</span>
+</div>
+
+<div class="hud top-right">
+	<div class="clock"><span id="clock-hm">--:--</span><span id="clock-s" class="clock-s">--</span></div>
+	<div id="clock-date" class="clock-date">—</div>
+</div>
+
+<aside class="hud left">
+	<h2>SYSTEM VITALS <span class="dim">VAULT.LINK</span></h2>
+
+	<div class="vital">
+		<div class="vital-head"><i class="led"></i>NOTES <span id="stat-notes-side" class="side">—</span></div>
+		<div id="stat-notes" class="vital-num">—</div>
+		<div id="spark-notes" class="spark"></div>
+	</div>
+
+	<div class="vital">
+		<div class="vital-head"><i class="led"></i>LINKS <span id="stat-links-side" class="side">—</span></div>
+		<div id="stat-links" class="vital-num">—</div>
+		<div id="spark-links" class="spark"></div>
+	</div>
+
+	<div class="vital">
+		<div class="vital-head"><i class="led"></i>WORDS <span id="stat-words-side" class="side">—</span></div>
+		<div id="stat-words" class="vital-num">—</div>
+	</div>
+
+	<div class="vital">
+		<div class="vital-head"><i class="led"></i>CLAUDE 5H WINDOW <span id="claude-side" class="side">—</span></div>
+		<div class="vital-num"><span id="claude-pct">—</span><span class="unit">%</span></div>
+		<div id="spark-claude" class="spark"></div>
+	</div>
+
+	<h2 class="gap">DOCUMENTS <span class="dim">RECENT.TRAIL</span></h2>
+	<div id="documents" class="rows"></div>
+</aside>
+
+<aside class="hud right">
+	<h2>CLUSTERS <span class="dim">REGIONS.MAP</span></h2>
+	<div id="clusters" class="rows"></div>
+
+	<h2 class="gap">HUBS <span class="dim">MOST.LINKED</span></h2>
+	<div id="hubs" class="rows"></div>
+
+	<p class="hint">CLICK NODE → OPEN IN OBSIDIAN<br/>R → RELOAD · F → REFRAME</p>
+</aside>
+
+<footer class="hud bottom-center">
+	<div class="directive">PRIMARY ARCHIVE · LIVE NEURAL MAP</div>
+	<div class="big"><span id="big-number">—</span><span class="big-unit">NOTES</span></div>
+	<div class="rule"></div>
+	<div id="velocity" class="velocity">—</div>
+</footer>
+
+<script src="/app.js"></script>
+</body>
+</html>

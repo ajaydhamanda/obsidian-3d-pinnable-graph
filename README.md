@@ -56,6 +56,23 @@ Search for **3D Pinnable Graph** in Settings → Community plugins → Browse (o
 
 Add this repository in the [BRAT](https://github.com/TfTHacker/obsidian42-brat) plugin to install and receive beta updates.
 
+## Bonus: V.A.U.L.T. — a sci-fi HUD for your vault
+
+The repo ships with a standalone companion app in [`vault-hud/`](vault-hud/): a gold, JARVIS-style
+dashboard that renders your vault as a glowing particle brain floating in space, framed by live
+panels — note/link/word counts with sparklines, cluster regions, top hubs, recent notes, a live
+clock, and a Claude Code usage gauge (read from your local `~/.claude` session data, if you use
+Claude Code).
+
+```bash
+npm install
+echo "/path/to/your/vault" > .vault-path   # or export OBSIDIAN_VAULT
+npm run vault                              # → http://localhost:3000
+```
+
+It runs entirely locally, reads your vault from disk (no Obsidian required), and clicking any
+node opens that note in Obsidian. `R` reloads the graph, `F` reframes the camera.
+
 ## Development
 
 ```bash
