@@ -1,0 +1,9 @@
+{
+  "id": "3d-pinnable-graph",
+  "name": "3D Pinnable Graph",
+  "version": "1.0.0",
+  "minAppVersion": "1.4.0",
+  "description": "Explore your vault as a 3D force-directed graph and pin nodes in place while everything else moves elastically around them.",
+  "author": "Ajay Dhamanda",
+  "isDesktopOnly": true
+}
